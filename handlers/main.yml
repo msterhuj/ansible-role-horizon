@@ -1,2 +1,7 @@
 ---
 # handlers file for horizon
+- name: "Restart apache2"
+  service:
+    name: apache2
+    state: restarted
+  when: horizon_config.changed

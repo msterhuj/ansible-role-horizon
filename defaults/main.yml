@@ -1,2 +1,31 @@
 ---
 # defaults file for horizon
+os_horizon_timezone: 'UTC'
+os_horizon_host: '127.0.0.1'
+os_horizon_keystone_url: 'http://{{ os_horizon_host }}:5000/v3'
+os_horizon_allowed_hosts: ["*"]
+os_horizon_webroot: '/horizon/'
+os_horizon_theme: 'default'
+
+os_horizon_session_engine: 'django.contrib.sessions.backends.signed_cookies'
+os_horizon_caches: {}
+#  default:
+#    BACKEND: 'django.core.cache.backends.memcached.MemcachedCache'
+#    LOCATION: '127.0.0.1:11211'
+
+os_horizon_api_versions:
+  identity: 3
+  image: 2
+  volume: 2
+
+os_horizon_keystone_multi_domain_support: false
+os_horizon_keystone_default_domain: 'Default'
+os_horizon_keystone_default_role: 'user'
+
+os_horizon_neutron_network:
+  enable_router: false
+  enable_quotas: false
+  enable_ipv6: false
+  enable_distributed_router: false
+  enable_ha_router: false
+  enable_fip_topology_check: false

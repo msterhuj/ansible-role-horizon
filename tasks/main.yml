@@ -1,2 +1,24 @@
 ---
 # tasks file for horizon
+
+- name: "Install horizon package"
+  apt:
+    package:
+      - openstack-dashboard
+      - python3-django-redis
+
+- name: "Push horizon configuration"
+  template:
+    src: "local_settings.py.j2"
+    dest: "/etc/openstack-dashboard/local_settings.py"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  notify: "Restart apache2"
+
+- name: "Ensure line WSGIApplicationGroup is set on apache2 conf dashboard"
+  lineinfile:
+    path: "/etc/apache2/conf-available/openstack-dashboard.conf"
+    line: "WSGIApplicationGroup %{GLOBAL}"
+    state: present
+  notify: "Restart apache2"

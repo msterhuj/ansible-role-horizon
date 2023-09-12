@@ -16,14 +16,14 @@ os_horizon_caches: {}
 os_horizon_api_versions:
   identity: 3
   image: 2
-  volume: 2
+  volume: 3
 
 os_horizon_keystone_multi_domain_support: false
 os_horizon_keystone_default_domain: 'Default'
-os_horizon_keystone_default_role: 'user'
+os_horizon_keystone_default_role: 'reader'
 
 os_horizon_neutron_network:
-  enable_router: false
+  enable_router: true
   enable_quotas: false
   enable_ipv6: false
   enable_distributed_router: false
